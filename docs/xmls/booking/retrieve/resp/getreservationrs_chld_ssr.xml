@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap-env:Header>
+    <eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1">
+      <eb:From>
+        <eb:PartyId eb:type="URI">sabre.com</eb:PartyId>
+      </eb:From>
+      <eb:To>
+        <eb:PartyId eb:type="URI">customade.com.us</eb:PartyId>
+      </eb:To>
+      <eb:CPAId>IPCC</eb:CPAId>
+      <eb:ConversationId>20230927-0206-234930.1396988237869755</eb:ConversationId>
+      <eb:Service>GetReservationRQ</eb:Service>
+      <eb:Action>GetReservationRQ</eb:Action>
+      <eb:MessageData>
+        <eb:MessageId>48985075835231590</eb:MessageId>
+        <eb:Timestamp>2023-09-27T02:06:24</eb:Timestamp>
+        <eb:RefToMessageId>mid:20230927-0206-23493@customade.com.us</eb:RefToMessageId>
+      </eb:MessageData>
+    </eb:MessageHeader>
+    <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext">
+      <wsse:BinarySecurityToken EncodingType="wsse:Base64Binary" valueType="String">Shared/IDL:IceSess/SessMgr:1.0.IDL/Common/!ICESMS/ACPCRTD!ICESMSLB/CRT.LB!1695780383407!7245!533</wsse:BinarySecurityToken>
+    </wsse:Security>
+  </soap-env:Header>
+  <soap-env:Body>
+    <stl19:GetReservationRS xmlns:ns4="http://webservices.sabre.com/pnrconn/ReaccSearch" xmlns:ns6="http://services.sabre.com/res/orr/v0" xmlns:or114="http://services.sabre.com/res/or/v1_14" xmlns:raw="http://tds.sabre.com/itinerary" xmlns:stl19="http://webservices.sabre.com/pnrbuilder/v1_19" Version="1.19.0">
+      <stl19:Reservation NumberInSegment="2" numberInParty="2" numberOfInfants="0">
+        <stl19:BookingDetails>
+          <stl19:RecordLocator>CWZTXI</stl19:RecordLocator>
+          <stl19:CreationTimestamp>2023-09-26T20:43:00</stl19:CreationTimestamp>
+          <stl19:SystemCreationTimestamp>2023-09-26T20:43:00</stl19:SystemCreationTimestamp>
+          <stl19:CreationAgentID>AWU</stl19:CreationAgentID>
+          <stl19:UpdateTimestamp>2023-09-26T20:55:19</stl19:UpdateTimestamp>
+          <stl19:PNRSequence>5</stl19:PNRSequence>
+          <stl19:FlightsRange End="2023-10-13T07:35:00" Start="2023-10-12T15:30:00"/>
+          <stl19:DivideSplitDetails/>
+          <stl19:EstimatedPurgeTimestamp>2023-10-12T00:00:00</stl19:EstimatedPurgeTimestamp>
+          <stl19:UpdateToken>a1eAjlTO0mDpy8r8yOiKYmbJ37vUtu24AMPqeYYDeG6LZQ0wRyA6jg==</stl19:UpdateToken>
+        </stl19:BookingDetails>
+        <stl19:POS AirExtras="false" InhibitCode="U">
+          <stl19:Source AgentDutyCode="*" AgentSine="AWU" AirlineVendorID="AA" BookingSource="7DCK" HomePseudoCityCode="MF13" ISOCountry="US" PrimeHostID="1S" PseudoCityCode="7DCK"/>
+        </stl19:POS>
+        <stl19:PassengerReservation>
+          <stl19:Passengers>
+            <stl19:Passenger elementId="pnr-3.1" id="3" nameAssocId="1" nameId="01.01" nameType="S" passengerType="ADT">
+              <stl19:LastName>JONES</stl19:LastName>
+              <stl19:FirstName>BRUCE</stl19:FirstName>
+              <stl19:SpecialRequests>
+                <stl19:APISRequest>
+                  <stl19:DOCSEntry id="19" type="G">
+                    <stl19:DateOfBirth>1999-01-10</stl19:DateOfBirth>
+                    <stl19:Gender>M</stl19:Gender>
+                    <stl19:Surname>JONES</stl19:Surname>
+                    <stl19:Forename>BRUCE</stl19:Forename>
+                    <stl19:MiddleName/>
+                    <stl19:PrimaryHolder>false</stl19:PrimaryHolder>
+                    <stl19:FreeText/>
+                    <stl19:ActionCode>HK</stl19:ActionCode>
+                    <stl19:NumberInParty>1</stl19:NumberInParty>
+                    <stl19:VendorCode>UA</stl19:VendorCode>
+                  </stl19:DOCSEntry>
+                </stl19:APISRequest>
+              </stl19:SpecialRequests>
+              <stl19:Seats/>
+            </stl19:Passenger>
+            <stl19:Passenger elementId="pnr-5.2" id="5" nameAssocId="2" nameId="02.01" nameType="S" passengerType="CNN">
+              <stl19:LastName>JONES</stl19:LastName>
+              <stl19:FirstName>CARL</stl19:FirstName>
+              <stl19:SpecialRequests>
+                <stl19:ChildRequest id="22" type="G">
+                  <stl19:DateOfBirth>10JAN19</stl19:DateOfBirth>
+                  <stl19:VendorCode>UA</stl19:VendorCode>
+                  <stl19:ActionCode>HK</stl19:ActionCode>
+                  <stl19:NumberInParty>1</stl19:NumberInParty>
+                </stl19:ChildRequest>
+                <stl19:ChildRequest id="24" type="G">
+                  <stl19:DateOfBirth>10JAN19</stl19:DateOfBirth>
+                  <stl19:VendorCode>UA</stl19:VendorCode>
+                  <stl19:ActionCode>HK</stl19:ActionCode>
+                  <stl19:NumberInParty>1</stl19:NumberInParty>
+                </stl19:ChildRequest>
+                <stl19:APISRequest>
+                  <stl19:DOCSEntry id="20" type="G">
+                    <stl19:DateOfBirth>2019-01-10</stl19:DateOfBirth>
+                    <stl19:Gender>M</stl19:Gender>
+                    <stl19:Surname>JONES</stl19:Surname>
+                    <stl19:Forename>CARL</stl19:Forename>
+                    <stl19:MiddleName/>
+                    <stl19:PrimaryHolder>false</stl19:PrimaryHolder>
+                    <stl19:FreeText/>
+                    <stl19:ActionCode>HK</stl19:ActionCode>
+                    <stl19:NumberInParty>1</stl19:NumberInParty>
+                    <stl19:VendorCode>UA</stl19:VendorCode>
+                  </stl19:DOCSEntry>
+                </stl19:APISRequest>
+              </stl19:SpecialRequests>
+              <stl19:Seats/>
+            </stl19:Passenger>
+          </stl19:Passengers>
+          <stl19:Segments>
+            <stl19:Poc>
+              <stl19:Airport>EWR</stl19:Airport>
+              <stl19:Departure>2023-10-12T15:30:00</stl19:Departure>
+            </stl19:Poc>
+            <stl19:Segment id="10" sequence="1">
+              <stl19:Air Code="UA" CodeShare="false" DayOfWeekInd="4" ResBookDesigCode="T" SmokingAllowed="false" SpecialMeal="false" StopQuantity="00" id="10" isPast="false" segmentAssociationId="2" sequence="1">
+                <stl19:DepartureAirport>EWR</stl19:DepartureAirport>
+                <stl19:DepartureAirportCodeContext>IATA</stl19:DepartureAirportCodeContext>
+                <stl19:DepartureTerminalName>TERMINAL C</stl19:DepartureTerminalName>
+                <stl19:DepartureTerminalCode>C</stl19:DepartureTerminalCode>
+                <stl19:ArrivalAirport>IAH</stl19:ArrivalAirport>
+                <stl19:ArrivalAirportCodeContext>IATA</stl19:ArrivalAirportCodeContext>
+                <stl19:ArrivalTerminalName>TERMINAL C</stl19:ArrivalTerminalName>
+                <stl19:ArrivalTerminalCode>C</stl19:ArrivalTerminalCode>
+                <stl19:OperatingAirlineCode>UA</stl19:OperatingAirlineCode>
+                <stl19:OperatingAirlineShortName>UNITED AIRLINES</stl19:OperatingAirlineShortName>
+                <stl19:OperatingFlightNumber>2206</stl19:OperatingFlightNumber>
+                <stl19:EquipmentType>763</stl19:EquipmentType>
+                <stl19:MarketingAirlineCode>UA</stl19:MarketingAirlineCode>
+                <stl19:MarketingFlightNumber>2206</stl19:MarketingFlightNumber>
+                <stl19:OperatingClassOfService>T</stl19:OperatingClassOfService>
+                <stl19:MarketingClassOfService>T</stl19:MarketingClassOfService>
+                <stl19:MarriageGrp>
+                  <stl19:Ind>0</stl19:Ind>
+                  <stl19:Group>2</stl19:Group>
+                  <stl19:Sequence>1</stl19:Sequence>
+                </stl19:MarriageGrp>
+                <stl19:Meal Code="G"/>
+                <stl19:Seats/>
+                <stl19:AirlineRefId>DCUA*AFW4TR</stl19:AirlineRefId>
+                <stl19:Eticket>true</stl19:Eticket>
+                <stl19:DepartureDateTime>2023-10-12T15:30:00</stl19:DepartureDateTime>
+                <stl19:ArrivalDateTime>2023-10-12T18:29:00</stl19:ArrivalDateTime>
+                <stl19:FlightNumber>2206</stl19:FlightNumber>
+                <stl19:ClassOfService>T</stl19:ClassOfService>
+                <stl19:ActionCode>HK</stl19:ActionCode>
+                <stl19:NumberInParty>2</stl19:NumberInParty>
+                <stl19:SegmentSpecialRequests/>
+                <stl19:inboundConnection>false</stl19:inboundConnection>
+                <stl19:outboundConnection>true</stl19:outboundConnection>
+                <stl19:ScheduleChangeIndicator>false</stl19:ScheduleChangeIndicator>
+                <stl19:SegmentBookedDate>2023-09-26T20:43:00</stl19:SegmentBookedDate>
+                <stl19:ElapsedTime>03.59</stl19:ElapsedTime>
+                <stl19:AirMilesFlown>1405</stl19:AirMilesFlown>
+                <stl19:FunnelFlight>false</stl19:FunnelFlight>
+                <stl19:ChangeOfGauge>false</stl19:ChangeOfGauge>
+                <stl19:Cabin Code="Y" Lang="EN" Name="ECONOMY" SabreCode="Y" ShortName="ECONOMY"/>
+                <stl19:Banner>MARKETED BY UNITED AIRLINES</stl19:Banner>
+                <stl19:Informational>false</stl19:Informational>
+              </stl19:Air>
+              <stl19:Product id="10">
+                <or114:ProductDetails productCategory="AIR">
+                  <or114:ProductName type="AIR"/>
+                  <or114:Air segmentAssociationId="2" sequence="1">
+                    <or114:DepartureAirport>EWR</or114:DepartureAirport>
+                    <or114:DepartureTerminalName>TERMINAL C</or114:DepartureTerminalName>
+                    <or114:DepartureTerminalCode>C</or114:DepartureTerminalCode>
+                    <or114:ArrivalAirport>IAH</or114:ArrivalAirport>
+                    <or114:ArrivalTerminalName>TERMINAL C</or114:ArrivalTerminalName>
+                    <or114:ArrivalTerminalCode>C</or114:ArrivalTerminalCode>
+                    <or114:EquipmentType>763</or114:EquipmentType>
+                    <or114:MarketingAirlineCode>UA</or114:MarketingAirlineCode>
+                    <or114:MarketingFlightNumber>2206</or114:MarketingFlightNumber>
+                    <or114:MarketingClassOfService>T</or114:MarketingClassOfService>
+                    <or114:MarriageGrp>
+                      <or114:Group>2</or114:Group>
+                      <or114:Sequence>1</or114:Sequence>
+                    </or114:MarriageGrp>
+                    <or114:Cabin code="Y" lang="EN" name="ECONOMY" sabreCode="Y" shortName="ECONOMY"/>
+                    <or114:MealCode>G</or114:MealCode>
+                    <or114:ElapsedTime>239</or114:ElapsedTime>
+                    <or114:AirMilesFlown>1405</or114:AirMilesFlown>
+                    <or114:FunnelFlight>false</or114:FunnelFlight>
+                    <or114:ChangeOfGauge>false</or114:ChangeOfGauge>
+                    <or114:DisclosureCarrier Code="UA" DOT="false">
+                      <or114:Banner>UNITED AIRLINES</or114:Banner>
+                    </or114:DisclosureCarrier>
+                    <or114:AirlineRefId>DCUA*AFW4TR</or114:AirlineRefId>
+                    <or114:Eticket>true</or114:Eticket>
+                    <or114:DepartureDateTime>2023-10-12T15:30:00</or114:DepartureDateTime>
+                    <or114:ArrivalDateTime>2023-10-12T18:29:00</or114:ArrivalDateTime>
+                    <or114:FlightNumber>2206</or114:FlightNumber>
+                    <or114:ClassOfService>T</or114:ClassOfService>
+                    <or114:ActionCode>HK</or114:ActionCode>
+                    <or114:NumberInParty>2</or114:NumberInParty>
+                    <or114:inboundConnection>false</or114:inboundConnection>
+                    <or114:outboundConnection>true</or114:outboundConnection>
+                    <or114:ScheduleChangeIndicator>false</or114:ScheduleChangeIndicator>
+                    <or114:SegmentBookedDate>2023-09-26T20:43:00</or114:SegmentBookedDate>
+                  </or114:Air>
+                </or114:ProductDetails>
+              </stl19:Product>
+            </stl19:Segment>
+            <stl19:Segment id="11" sequence="2">
+              <stl19:Air Code="UA" CodeShare="false" DayOfWeekInd="4" ResBookDesigCode="T" SmokingAllowed="false" SpecialMeal="false" StopQuantity="00" id="11" isPast="false" segmentAssociationId="3" sequence="2">
+                <stl19:DepartureAirport>IAH</stl19:DepartureAirport>
+                <stl19:DepartureAirportCodeContext>IATA</stl19:DepartureAirportCodeContext>
+                <stl19:DepartureTerminalName>TERMINAL E</stl19:DepartureTerminalName>
+                <stl19:DepartureTerminalCode>E</stl19:DepartureTerminalCode>
+                <stl19:ArrivalAirport>GRU</stl19:ArrivalAirport>
+                <stl19:ArrivalAirportCodeContext>IATA</stl19:ArrivalAirportCodeContext>
+                <stl19:ArrivalTerminalName>TERMINAL 3</stl19:ArrivalTerminalName>
+                <stl19:ArrivalTerminalCode>3</stl19:ArrivalTerminalCode>
+                <stl19:OperatingAirlineCode>UA</stl19:OperatingAirlineCode>
+                <stl19:OperatingAirlineShortName>UNITED AIRLINES</stl19:OperatingAirlineShortName>
+                <stl19:OperatingFlightNumber>0062</stl19:OperatingFlightNumber>
+                <stl19:EquipmentType>789</stl19:EquipmentType>
+                <stl19:MarketingAirlineCode>UA</stl19:MarketingAirlineCode>
+                <stl19:MarketingFlightNumber>0062</stl19:MarketingFlightNumber>
+                <stl19:OperatingClassOfService>T</stl19:OperatingClassOfService>
+                <stl19:MarketingClassOfService>T</stl19:MarketingClassOfService>
+                <stl19:MarriageGrp>
+                  <stl19:Ind>0</stl19:Ind>
+                  <stl19:Group>2</stl19:Group>
+                  <stl19:Sequence>2</stl19:Sequence>
+                </stl19:MarriageGrp>
+                <stl19:Meal Code="D"/>
+                <stl19:Seats/>
+                <stl19:AirlineRefId>DCUA*AFW4TR</stl19:AirlineRefId>
+                <stl19:Eticket>true</stl19:Eticket>
+                <stl19:DepartureDateTime>2023-10-12T19:55:00</stl19:DepartureDateTime>
+                <stl19:ArrivalDateTime>2023-10-13T07:35:00</stl19:ArrivalDateTime>
+                <stl19:FlightNumber>0062</stl19:FlightNumber>
+                <stl19:ClassOfService>T</stl19:ClassOfService>
+                <stl19:ActionCode>HK</stl19:ActionCode>
+                <stl19:NumberInParty>2</stl19:NumberInParty>
+                <stl19:SegmentSpecialRequests/>
+                <stl19:inboundConnection>true</stl19:inboundConnection>
+                <stl19:outboundConnection>false</stl19:outboundConnection>
+                <stl19:ScheduleChangeIndicator>false</stl19:ScheduleChangeIndicator>
+                <stl19:SegmentBookedDate>2023-09-26T20:43:00</stl19:SegmentBookedDate>
+                <stl19:ElapsedTime>09.40</stl19:ElapsedTime>
+                <stl19:AirMilesFlown>4902</stl19:AirMilesFlown>
+                <stl19:FunnelFlight>false</stl19:FunnelFlight>
+                <stl19:ChangeOfGauge>false</stl19:ChangeOfGauge>
+                <stl19:Cabin Code="Y" Lang="EN" Name="ECONOMY" SabreCode="Y" ShortName="ECONOMY"/>
+                <stl19:Banner>MARKETED BY UNITED AIRLINES</stl19:Banner>
+                <stl19:Informational>false</stl19:Informational>
+              </stl19:Air>
+              <stl19:Product id="11">
+                <or114:ProductDetails productCategory="AIR">
+                  <or114:ProductName type="AIR"/>
+                  <or114:Air segmentAssociationId="3" sequence="2">
+                    <or114:DepartureAirport>IAH</or114:DepartureAirport>
+                    <or114:DepartureTerminalName>TERMINAL E</or114:DepartureTerminalName>
+                    <or114:DepartureTerminalCode>E</or114:DepartureTerminalCode>
+                    <or114:ArrivalAirport>GRU</or114:ArrivalAirport>
+                    <or114:ArrivalTerminalName>TERMINAL 3</or114:ArrivalTerminalName>
+                    <or114:ArrivalTerminalCode>3</or114:ArrivalTerminalCode>
+                    <or114:EquipmentType>789</or114:EquipmentType>
+                    <or114:MarketingAirlineCode>UA</or114:MarketingAirlineCode>
+                    <or114:MarketingFlightNumber>62</or114:MarketingFlightNumber>
+                    <or114:MarketingClassOfService>T</or114:MarketingClassOfService>
+                    <or114:MarriageGrp>
+                      <or114:Group>2</or114:Group>
+                      <or114:Sequence>2</or114:Sequence>
+                    </or114:MarriageGrp>
+                    <or114:Cabin code="Y" lang="EN" name="ECONOMY" sabreCode="Y" shortName="ECONOMY"/>
+                    <or114:MealCode>D</or114:MealCode>
+                    <or114:ElapsedTime>580</or114:ElapsedTime>
+                    <or114:AirMilesFlown>4902</or114:AirMilesFlown>
+                    <or114:FunnelFlight>false</or114:FunnelFlight>
+                    <or114:ChangeOfGauge>false</or114:ChangeOfGauge>
+                    <or114:DisclosureCarrier Code="UA" DOT="false">
+                      <or114:Banner>UNITED AIRLINES</or114:Banner>
+                    </or114:DisclosureCarrier>
+                    <or114:AirlineRefId>DCUA*AFW4TR</or114:AirlineRefId>
+                    <or114:Eticket>true</or114:Eticket>
+                    <or114:DepartureDateTime>2023-10-12T19:55:00</or114:DepartureDateTime>
+                    <or114:ArrivalDateTime>2023-10-13T07:35:00</or114:ArrivalDateTime>
+                    <or114:FlightNumber>62</or114:FlightNumber>
+                    <or114:ClassOfService>T</or114:ClassOfService>
+                    <or114:ActionCode>HK</or114:ActionCode>
+                    <or114:NumberInParty>2</or114:NumberInParty>
+                    <or114:inboundConnection>true</or114:inboundConnection>
+                    <or114:outboundConnection>false</or114:outboundConnection>
+                    <or114:ScheduleChangeIndicator>false</or114:ScheduleChangeIndicator>
+                    <or114:SegmentBookedDate>2023-09-26T20:43:00</or114:SegmentBookedDate>
+                  </or114:Air>
+                </or114:ProductDetails>
+              </stl19:Product>
+            </stl19:Segment>
+          </stl19:Segments>
+          <stl19:TicketingInfo>
+            <stl19:TicketingTimeLimit elementId="pnr-7" id="7" index="1">
+              <stl19:Time>TL0900P/28SEP-THU28SEP/2100</stl19:Time>
+            </stl19:TicketingTimeLimit>
+          </stl19:TicketingInfo>
+          <stl19:ItineraryPricing>
+            <stl19:PricedItinerary InputMessage="WPS1/2*ZZTLA2A0BL$P1ADT/1CNN$RQ" SequenceNumber="1" StatusCode="A" TaxExempt="N" ValidatingCarrier="UA">
+              <stl19:AirItineraryPricingInfo>
+                <stl19:ItinTotalFare code="NN">
+                  <stl19:Base currencyCode="USD">391.00</stl19:Base>
+                  <stl19:Total currencyCode="USD">426.70</stl19:Total>
+                  <stl19:Taxes>
+                    <stl19:Tax code="XT">
+                      <stl19:Amount currency="USD" currencyCode="USD">35.70</stl19:Amount>
+                    </stl19:Tax>
+                    <stl19:TaxBreakdownCode TaxPaid="false">5.60AY</stl19:TaxBreakdownCode>
+                    <stl19:TaxBreakdownCode TaxPaid="false">21.10US</stl19:TaxBreakdownCode>
+                    <stl19:TaxBreakdownCode TaxPaid="false">9.00XF</stl19:TaxBreakdownCode>
+                  </stl19:Taxes>
+                  <stl19:Totals code="NN">
+                    <stl19:Base currency="USD" currencyCode="USD">391.00</stl19:Base>
+                    <stl19:TotalTax currency="USD" currencyCode="USD">35.70</stl19:TotalTax>
+                    <stl19:Total currency="USD" currencyCode="USD">426.70</stl19:Total>
+                  </stl19:Totals>
+                </stl19:ItinTotalFare>
+                <stl19:PTC_FareBreakdown>
+                  <stl19:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                  <stl19:FareBasisCode>TLA2A0BL</stl19:FareBasisCode>
+                  <stl19:FareCalc>EWR UA X/HOU UA SAO391.00NUC391.00END ROE1.00 XFEWR4.5IAH4.5</stl19:FareCalc>
+                  <stl19:FlightSegment RPH="001">
+                    <stl19:DepartureDateTime>2023-10-12T15:30:00</stl19:DepartureDateTime>
+                    <stl19:ResBookDesigCode>T</stl19:ResBookDesigCode>
+                    <stl19:FlightNumber>2206</stl19:FlightNumber>
+                    <stl19:ActionCode>OK</stl19:ActionCode>
+                    <stl19:FlightType>O</stl19:FlightType>
+                    <stl19:AirPort name="NEWARK">EWR</stl19:AirPort>
+                    <stl19:OperatingAirline>UA</stl19:OperatingAirline>
+                    <stl19:FareBasisCode>TLA2A0BL</stl19:FareBasisCode>
+                    <stl19:ValidityDates>
+                      <stl19:NotValidBefore>12OCT2023</stl19:NotValidBefore>
+                      <stl19:NotValidAfter>12OCT2023</stl19:NotValidAfter>
+                    </stl19:ValidityDates>
+                  </stl19:FlightSegment>
+                  <stl19:FlightSegment RPH="002">
+                    <stl19:DepartureDateTime>2023-10-12T19:55:00</stl19:DepartureDateTime>
+                    <stl19:ResBookDesigCode>T</stl19:ResBookDesigCode>
+                    <stl19:FlightNumber>62</stl19:FlightNumber>
+                    <stl19:ActionCode>OK</stl19:ActionCode>
+                    <stl19:FlightType>X</stl19:FlightType>
+                    <stl19:AirPort name="HOUSTON GEO BUSH">IAH</stl19:AirPort>
+                    <stl19:OperatingAirline>UA</stl19:OperatingAirline>
+                    <stl19:FareBasisCode>TLA2A0BL</stl19:FareBasisCode>
+                    <stl19:ValidityDates>
+                      <stl19:NotValidBefore>12OCT2023</stl19:NotValidBefore>
+                      <stl19:NotValidAfter>12OCT2023</stl19:NotValidAfter>
+                    </stl19:ValidityDates>
+                  </stl19:FlightSegment>
+                  <stl19:FlightSegment>
+                    <stl19:AirPort name="SAO PAULO GUARULH">GRU</stl19:AirPort>
+                  </stl19:FlightSegment>
+                  <stl19:FareComponent Amount="39100" FareBasisCode="TLA2A0BL" FareComponentNumber="1" FareDirectionality="FROM" GoverningCarrier="UA" TicketDesignator="">
+                    <stl19:Location Destination="SAO" Origin="EWR"/>
+                    <stl19:Dates ArrivalDateTime="10-13T07:35" DepartureDateTime="10-12T15:30"/>
+                    <stl19:FlightSegmentNumbers>
+                      <stl19:FlightSegmentNumber>1</stl19:FlightSegmentNumber>
+                      <stl19:FlightSegmentNumber>2</stl19:FlightSegmentNumber>
+                    </stl19:FlightSegmentNumbers>
+                  </stl19:FareComponent>
+                  <stl19:PassengerTypeRequested Code="ADT"/>
+                  <stl19:PassengerTypePriced Code="ADT"/>
+                </stl19:PTC_FareBreakdown>
+                <stl19:TicketingFees/>
+                <stl19:SignatureLine>
+                  <stl19:Text>7DCK MF13 *AWU 2043/26SEP</stl19:Text>
+                </stl19:SignatureLine>
+              </stl19:AirItineraryPricingInfo>
+            </stl19:PricedItinerary>
+            <stl19:PricedItinerary InputMessage="WPS1/2*ZZTLA2A0BL$P1ADT/1CNN$RQ" SequenceNumber="2" StatusCode="A" TaxExempt="N" ValidatingCarrier="UA">
+              <stl19:AirItineraryPricingInfo>
+                <stl19:ItinTotalFare code="NN">
+                  <stl19:Base currencyCode="USD">293.00</stl19:Base>
+                  <stl19:Total currencyCode="USD">328.70</stl19:Total>
+                  <stl19:Taxes>
+                    <stl19:Tax code="XT">
+                      <stl19:Amount currency="USD" currencyCode="USD">35.70</stl19:Amount>
+                    </stl19:Tax>
+                    <stl19:TaxBreakdownCode TaxPaid="false">5.60AY</stl19:TaxBreakdownCode>
+                    <stl19:TaxBreakdownCode TaxPaid="false">21.10US</stl19:TaxBreakdownCode>
+                    <stl19:TaxBreakdownCode TaxPaid="false">9.00XF</stl19:TaxBreakdownCode>
+                  </stl19:Taxes>
+                  <stl19:Totals code="NN">
+                    <stl19:Base currency="USD" currencyCode="USD">293.00</stl19:Base>
+                    <stl19:TotalTax currency="USD" currencyCode="USD">35.70</stl19:TotalTax>
+                    <stl19:Total currency="USD" currencyCode="USD">328.70</stl19:Total>
+                  </stl19:Totals>
+                </stl19:ItinTotalFare>
+                <stl19:PTC_FareBreakdown>
+                  <stl19:PassengerTypeQuantity Code="CNN" Quantity="1"/>
+                  <stl19:FareBasisCode>TLA2A0BL/CH25</stl19:FareBasisCode>
+                  <stl19:FareCalc>EWR UA X/HOU UA SAO293.25NUC293.25END ROE1.00 XFEWR4.5IAH4.5</stl19:FareCalc>
+                  <stl19:FlightSegment RPH="001">
+                    <stl19:DepartureDateTime>2023-10-12T15:30:00</stl19:DepartureDateTime>
+                    <stl19:ResBookDesigCode>T</stl19:ResBookDesigCode>
+                    <stl19:FlightNumber>2206</stl19:FlightNumber>
+                    <stl19:ActionCode>OK</stl19:ActionCode>
+                    <stl19:FlightType>O</stl19:FlightType>
+                    <stl19:AirPort name="NEWARK">EWR</stl19:AirPort>
+                    <stl19:OperatingAirline>UA</stl19:OperatingAirline>
+                    <stl19:FareBasisCode>TLA2A0BL/CH25</stl19:FareBasisCode>
+                    <stl19:ValidityDates>
+                      <stl19:NotValidBefore>12OCT2023</stl19:NotValidBefore>
+                      <stl19:NotValidAfter>12OCT2023</stl19:NotValidAfter>
+                    </stl19:ValidityDates>
+                  </stl19:FlightSegment>
+                  <stl19:FlightSegment RPH="002">
+                    <stl19:DepartureDateTime>2023-10-12T19:55:00</stl19:DepartureDateTime>
+                    <stl19:ResBookDesigCode>T</stl19:ResBookDesigCode>
+                    <stl19:FlightNumber>62</stl19:FlightNumber>
+                    <stl19:ActionCode>OK</stl19:ActionCode>
+                    <stl19:FlightType>X</stl19:FlightType>
+                    <stl19:AirPort name="HOUSTON GEO BUSH">IAH</stl19:AirPort>
+                    <stl19:OperatingAirline>UA</stl19:OperatingAirline>
+                    <stl19:FareBasisCode>TLA2A0BL/CH25</stl19:FareBasisCode>
+                    <stl19:ValidityDates>
+                      <stl19:NotValidBefore>12OCT2023</stl19:NotValidBefore>
+                      <stl19:NotValidAfter>12OCT2023</stl19:NotValidAfter>
+                    </stl19:ValidityDates>
+                  </stl19:FlightSegment>
+                  <stl19:FlightSegment>
+                    <stl19:AirPort name="SAO PAULO GUARULH">GRU</stl19:AirPort>
+                  </stl19:FlightSegment>
+                  <stl19:FareComponent Amount="29325" FareBasisCode="TLA2A0BL/CH25" FareComponentNumber="1" FareDirectionality="FROM" GoverningCarrier="UA" TicketDesignator="CH25">
+                    <stl19:Location Destination="SAO" Origin="EWR"/>
+                    <stl19:Dates ArrivalDateTime="10-13T07:35" DepartureDateTime="10-12T15:30"/>
+                    <stl19:FlightSegmentNumbers>
+                      <stl19:FlightSegmentNumber>1</stl19:FlightSegmentNumber>
+                      <stl19:FlightSegmentNumber>2</stl19:FlightSegmentNumber>
+                    </stl19:FlightSegmentNumbers>
+                  </stl19:FareComponent>
+                  <stl19:PassengerTypeRequested Code="CNN"/>
+                  <stl19:PassengerTypePriced Code="CNN"/>
+                </stl19:PTC_FareBreakdown>
+                <stl19:TicketingFees/>
+                <stl19:SignatureLine>
+                  <stl19:Text>7DCK MF13 *AWU 2043/26SEP</stl19:Text>
+                </stl19:SignatureLine>
+              </stl19:AirItineraryPricingInfo>
+            </stl19:PricedItinerary>
+          </stl19:ItineraryPricing>
+        </stl19:PassengerReservation>
+        <stl19:ReceivedFrom>
+          <stl19:Name>AGENT.GURU</stl19:Name>
+        </stl19:ReceivedFrom>
+        <stl19:PhoneNumbers>
+          <stl19:PhoneNumber elementId="pnr-8" id="8" index="1">
+            <stl19:CityCode>MIA</stl19:CityCode>
+            <stl19:Number>5595991680722-A-1.1</stl19:Number>
+          </stl19:PhoneNumber>
+          <stl19:PhoneNumber elementId="pnr-9" id="9" index="2">
+            <stl19:CityCode>MIA</stl19:CityCode>
+            <stl19:Number>5595991680722 A/C DEVS TRAVEL-A</stl19:Number>
+          </stl19:PhoneNumber>
+        </stl19:PhoneNumbers>
+        <stl19:Remarks>
+          <stl19:Remark elementId="pnr-12" id="12" index="1" type="INVOICE">
+            <stl19:RemarkLines>
+              <stl19:RemarkLine>
+                <stl19:Text>S*BR1</stl19:Text>
+              </stl19:RemarkLine>
+            </stl19:RemarkLines>
+          </stl19:Remark>
+          <stl19:Remark elementId="pnr-13" id="13" index="2" type="REG">
+            <stl19:RemarkLines>
+              <stl19:RemarkLine>
+                <stl19:Text>AGENT DEVS TRAVEL</stl19:Text>
+              </stl19:RemarkLine>
+            </stl19:RemarkLines>
+          </stl19:Remark>
+          <stl19:Remark elementId="pnr-14" id="14" index="3" type="REG">
+            <stl19:RemarkLines>
+              <stl19:RemarkLine>
+                <stl19:Text>AGENCY DEVS TRAVEL</stl19:Text>
+              </stl19:RemarkLine>
+            </stl19:RemarkLines>
+          </stl19:Remark>
+          <stl19:Remark elementId="pnr-15" id="15" index="4" type="REG">
+            <stl19:RemarkLines>
+              <stl19:RemarkLine>
+                <stl19:Text>CHD JONES CARL</stl19:Text>
+              </stl19:RemarkLine>
+            </stl19:RemarkLines>
+          </stl19:Remark>
+        </stl19:Remarks>
+        <stl19:EmailAddresses>
+          <stl19:EmailAddress id="17">
+            <stl19:Address>ENRIQUE@AGENT.GURU</stl19:Address>
+            <stl19:Comment>TO/@E</stl19:Comment>
+          </stl19:EmailAddress>
+        </stl19:EmailAddresses>
+        <stl19:OpenReservationElements>
+          <or114:OpenReservationElement elementId="pnr-19" id="19" type="SRVC">
+            <or114:ServiceRequest actionCode="HK" airlineCode="UA" code="DOCS" serviceCount="1" serviceType="SSR" ssrType="GFX">
+              <or114:FreeText>/DB/10JAN99/M/JONES/BRUCE</or114:FreeText>
+              <or114:FullText>DOCS UA HK1/DB/10JAN99/M/JONES/BRUCE</or114:FullText>
+              <or114:TravelDocument>
+                <or114:Type>DB</or114:Type>
+                <or114:DateOfBirth>10JAN99</or114:DateOfBirth>
+                <or114:Gender>M</or114:Gender>
+                <or114:LastName>JONES</or114:LastName>
+                <or114:FirstName>BRUCE</or114:FirstName>
+                <or114:Infant>false</or114:Infant>
+                <or114:HasDocumentData>false</or114:HasDocumentData>
+              </or114:TravelDocument>
+            </or114:ServiceRequest>
+            <or114:NameAssociation>
+              <or114:LastName>JONES</or114:LastName>
+              <or114:FirstName>BRUCE</or114:FirstName>
+              <or114:NameRefNumber>01.01</or114:NameRefNumber>
+              <or114:ReferenceId>1</or114:ReferenceId>
+            </or114:NameAssociation>
+          </or114:OpenReservationElement>
+          <or114:OpenReservationElement elementId="pnr-20" id="20" type="SRVC">
+            <or114:ServiceRequest actionCode="HK" airlineCode="UA" code="DOCS" serviceCount="1" serviceType="SSR" ssrType="GFX">
+              <or114:FreeText>/DB/10JAN19/M/JONES/CARL</or114:FreeText>
+              <or114:FullText>DOCS UA HK1/DB/10JAN19/M/JONES/CARL</or114:FullText>
+              <or114:TravelDocument>
+                <or114:Type>DB</or114:Type>
+                <or114:DateOfBirth>10JAN19</or114:DateOfBirth>
+                <or114:Gender>M</or114:Gender>
+                <or114:LastName>JONES</or114:LastName>
+                <or114:FirstName>CARL</or114:FirstName>
+                <or114:Infant>false</or114:Infant>
+                <or114:HasDocumentData>false</or114:HasDocumentData>
+              </or114:TravelDocument>
+            </or114:ServiceRequest>
+            <or114:NameAssociation>
+              <or114:LastName>JONES</or114:LastName>
+              <or114:FirstName>CARL</or114:FirstName>
+              <or114:NameRefNumber>02.01</or114:NameRefNumber>
+              <or114:ReferenceId>2</or114:ReferenceId>
+            </or114:NameAssociation>
+          </or114:OpenReservationElement>
+          <or114:OpenReservationElement elementId="pnr-22" id="22" type="SRVC">
+            <or114:ServiceRequest actionCode="HK" airlineCode="UA" code="CHLD" serviceCount="1" serviceType="SSR" ssrType="GFX">
+              <or114:FreeText>/10JAN19</or114:FreeText>
+              <or114:FullText>CHLD UA HK1/10JAN19</or114:FullText>
+            </or114:ServiceRequest>
+            <or114:NameAssociation>
+              <or114:LastName>JONES</or114:LastName>
+              <or114:FirstName>CARL</or114:FirstName>
+              <or114:NameRefNumber>02.01</or114:NameRefNumber>
+              <or114:ReferenceId>2</or114:ReferenceId>
+            </or114:NameAssociation>
+          </or114:OpenReservationElement>
+          <or114:OpenReservationElement elementId="pnr-24" id="24" type="SRVC">
+            <or114:ServiceRequest actionCode="HK" airlineCode="UA" code="CHLD" serviceCount="1" serviceType="SSR" ssrType="GFX">
+              <or114:FreeText>/10JAN19</or114:FreeText>
+              <or114:FullText>CHLD UA HK1/10JAN19</or114:FullText>
+            </or114:ServiceRequest>
+            <or114:NameAssociation>
+              <or114:LastName>JONES</or114:LastName>
+              <or114:FirstName>CARL</or114:FirstName>
+              <or114:NameRefNumber>02.01</or114:NameRefNumber>
+              <or114:ReferenceId>2</or114:ReferenceId>
+            </or114:NameAssociation>
+          </or114:OpenReservationElement>
+          <or114:OpenReservationElement elementId="pnr-17" id="17" type="PSG_DETAILS_MAIL">
+            <or114:Email comment="TO/@E" name="@E" type="TO">
+              <or114:Address>ENRIQUE@AGENT.GURU</or114:Address>
+            </or114:Email>
+          </or114:OpenReservationElement>
+        </stl19:OpenReservationElements>
+      </stl19:Reservation>
+      <or114:PriceQuote>
+        <PriceQuoteInfo xmlns="http://www.sabre.com/ns/Ticketing/pqs/1.0">
+          <Reservation updateToken="eNc:::0PIsdSXozQMaVO5oSgQC6w==">CWZTXI</Reservation>
+          <Summary>
+            <NameAssociation firstName="BRUCE" lastName="JONES" nameId="1" nameNumber="1.1">
+              <PriceQuote latestPQFlag="true" number="1" pricingType="S" status="A" type="PQ">
+                <Indicators segmentSelect="true"/>
+                <Passenger passengerTypeCount="1" requestedType="ADT" type="ADT"/>
+                <ItineraryType>I</ItineraryType>
+                <ValidatingCarrier>UA</ValidatingCarrier>
+                <Amounts>
+                  <Total currencyCode="USD" decimalPlace="2">426.70</Total>
+                </Amounts>
+                <LocalCreateDateTime>2023-09-26T21:43:00</LocalCreateDateTime>
+              </PriceQuote>
+            </NameAssociation>
+            <NameAssociation firstName="CARL" lastName="JONES" nameId="2" nameNumber="2.1">
+              <PriceQuote latestPQFlag="true" number="2" pricingType="S" status="A" type="PQ">
+                <Indicators segmentSelect="true"/>
+                <Passenger passengerTypeCount="1" requestedType="CNN" type="CNN"/>
+                <ItineraryType>I</ItineraryType>
+                <TicketDesignator>CH25</TicketDesignator>
+                <ValidatingCarrier>UA</ValidatingCarrier>
+                <Amounts>
+                  <Total currencyCode="USD" decimalPlace="2">328.70</Total>
+                </Amounts>
+                <LocalCreateDateTime>2023-09-26T21:43:00</LocalCreateDateTime>
+              </PriceQuote>
+            </NameAssociation>
+          </Summary>
+          <Details number="1" passengerType="ADT" pricingType="S" status="A" type="PQ">
+            <AgentInfo duty="*" sine="AWU">
+              <HomeLocation>MF13</HomeLocation>
+              <WorkLocation>7DCK</WorkLocation>
+            </AgentInfo>
+            <TransactionInfo>
+              <CreateDateTime>2023-09-26T20:43:00</CreateDateTime>
+              <UpdateDateTime>2023-09-26T20:43:00</UpdateDateTime>
+              <LocalCreateDateTime>2023-09-26T21:43:00</LocalCreateDateTime>
+              <LocalUpdateDateTime>2023-09-26T21:43:00</LocalUpdateDateTime>
+              <InputEntry>WPS1/2*ZZTLA2A0BL$P1ADT/1CNN$RQ</InputEntry>
+            </TransactionInfo>
+            <NameAssociationInfo firstName="BRUCE" lastName="JONES" nameId="1" nameNumber="1.1"/>
+            <SegmentInfo number="1" segmentStatus="OK">
+              <Flight connectionIndicator="O">
+                <MarketingFlight number="2206">UA</MarketingFlight>
+                <ClassOfService>T</ClassOfService>
+                <Departure>
+                  <DateTime>2023-10-12T15:30:00</DateTime>
+                  <CityCode name="NEWARK">EWR</CityCode>
+                </Departure>
+                <Arrival>
+                  <DateTime>2023-10-12T18:29:00</DateTime>
+                  <CityCode name="HOUSTON GEO BUSH">IAH</CityCode>
+                </Arrival>
+              </Flight>
+              <FareBasis>TLA2A0BL</FareBasis>
+              <NotValidBefore>2023-10-12</NotValidBefore>
+              <NotValidAfter>2023-10-12</NotValidAfter>
+              <Baggage allowance="NIL" type="N"/>
+              <BrandedFare/>
+            </SegmentInfo>
+            <SegmentInfo number="2" segmentStatus="OK">
+              <Flight connectionIndicator="X">
+                <MarketingFlight number="62">UA</MarketingFlight>
+                <ClassOfService>T</ClassOfService>
+                <Departure>
+                  <DateTime>2023-10-12T19:55:00</DateTime>
+                  <CityCode name="HOUSTON GEO BUSH">IAH</CityCode>
+                </Departure>
+                <Arrival>
+                  <DateTime>2023-10-13T07:35:00</DateTime>
+                  <CityCode name="SAO PAULO GUARULH">GRU</CityCode>
+                </Arrival>
+              </Flight>
+              <FareBasis>TLA2A0BL</FareBasis>
+              <NotValidBefore>2023-10-12</NotValidBefore>
+              <NotValidAfter>2023-10-12</NotValidAfter>
+              <Baggage allowance="NIL" type="N"/>
+              <BrandedFare/>
+            </SegmentInfo>
+            <FareInfo source="ATPC">
+              <FareIndicators/>
+              <BaseFare currencyCode="USD" decimalPlace="2">391.00</BaseFare>
+              <TotalTax currencyCode="USD" decimalPlace="2">35.70</TotalTax>
+              <TotalFare currencyCode="USD" decimalPlace="2">426.70</TotalFare>
+              <TaxInfo>
+                <CombinedTax code="AY">
+                  <Amount currencyCode="USD" decimalPlace="2">5.60</Amount>
+                </CombinedTax>
+                <CombinedTax code="US">
+                  <Amount currencyCode="USD" decimalPlace="2">21.10</Amount>
+                </CombinedTax>
+                <CombinedTax code="XF">
+                  <Amount currencyCode="USD" decimalPlace="2">9.00</Amount>
+                </CombinedTax>
+                <Tax code="AY">
+                  <Amount currencyCode="USD" decimalPlace="2">5.60</Amount>
+                </Tax>
+                <Tax code="US">
+                  <Amount currencyCode="USD" decimalPlace="2">21.10</Amount>
+                </Tax>
+                <Tax code="XF">
+                  <Amount currencyCode="USD" decimalPlace="2">9.00</Amount>
+                </Tax>
+              </TaxInfo>
+              <FareCalculation rateOfExchange="1.00000000">EWR UA X/HOU UA SAO391.00NUC391.00END ROE1.00 XFEWR4.5IAH4.5</FareCalculation>
+              <FareComponent fareBasisCode="TLA2A0BL" number="1" type="EOU" typeBitmap="00">
+                <FlightSegmentNumbers>
+                  <SegmentNumber>1</SegmentNumber>
+                  <SegmentNumber>2</SegmentNumber>
+                </FlightSegmentNumbers>
+                <FareDirectionality oneWay="true"/>
+                <Departure>
+                  <DateTime>2023-10-12T15:30:00</DateTime>
+                  <CityCode name="NEWARK">EWR</CityCode>
+                </Departure>
+                <Arrival>
+                  <DateTime>2023-10-13T07:35:00</DateTime>
+                  <CityCode name="SAO PAULO GUARULH">SAO</CityCode>
+                </Arrival>
+                <Amount currencyCode="NUC" decimalPlace="2">391.00</Amount>
+                <GoverningCarrier>UA</GoverningCarrier>
+                <Rules carrier="UA" rule="Y0BL" tariff="5" vendor="ATP"/>
+              </FareComponent>
+            </FareInfo>
+            <FeeInfo/>
+            <MiscellaneousInfo>
+              <ValidatingCarrier>UA</ValidatingCarrier>
+              <ItineraryType>I</ItineraryType>
+            </MiscellaneousInfo>
+            <MessageInfo>
+              <Message number="201" type="WARNING">Fare not guaranteed until ticketed</Message>
+              <Message type="WARNING">VALIDATING CARRIER - UA</Message>
+              <Remarks type="ENS">NRF-BE/NOCHGDAFTDPT/NOASR</Remarks>
+              <PricingParameters>WPS1/2*ZZTLA2A0BL$P1ADT/1CNN$RQ</PricingParameters>
+              <BaggageDisclosure>BAG ALLOWANCE     -EWRGRU-NIL/UA 1STCHECKED BAG FEE-EWRGRU-USD70.00/UA/UP TO 50 POUNDS/23 KILOGR AMS AND UP TO 62 LINEAR INCHES/158 LINEAR CENTIMETERS 2NDCHECKED BAG FEE-EWRGRU-USD100.00/UA/UP TO 70 POUNDS/32 KILOG RAMS AND UP TO 62 LINEAR INCHES/158 LINEAR CENTIMETERS CARRY ON ALLOWANCE EWRIAH IAHGRU-01P/UA 01/CARRY ON HAND BAGGAGE 01/UP TO 45 LINEAR INCHES/115 LINEAR CENTIMETERS CARRY ON CHARGES EWRIAH IAHGRU-UA-CARRY ON FEES UNKNOWN-CONTACT CARRIER ADDITIONAL ALLOWANCES AND/OR DISCOUNTS MAY APPLY DEPENDING ON FLYER-SPECIFIC FACTORS /E.G. FREQUENT FLYER STATUS/MILITARY/ CREDIT CARD FORM OF PAYMENT/EARLY PURCHASE OVER INTERNET,ETC./ </BaggageDisclosure>
+            </MessageInfo>
+            <HistoryInfo>
+              <AgentInfo sine="AWU">
+                <HomeLocation>7DCK</HomeLocation>
+              </AgentInfo>
+              <TransactionInfo>
+                <LocalDateTime>2023-09-26T21:43:00</LocalDateTime>
+                <InputEntry>WPS1/2*ZZTLA2A0BL$P1ADT/1CNN$RQ</InputEntry>
+              </TransactionInfo>
+            </HistoryInfo>
+          </Details>
+          <Details number="2" passengerType="CNN" pricingType="S" status="A" type="PQ">
+            <AgentInfo duty="*" sine="AWU">
+              <HomeLocation>MF13</HomeLocation>
+              <WorkLocation>7DCK</WorkLocation>
+            </AgentInfo>
+            <TransactionInfo>
+              <CreateDateTime>2023-09-26T20:43:00</CreateDateTime>
+              <UpdateDateTime>2023-09-26T20:43:00</UpdateDateTime>
+              <LocalCreateDateTime>2023-09-26T21:43:00</LocalCreateDateTime>
+              <LocalUpdateDateTime>2023-09-26T21:43:00</LocalUpdateDateTime>
+              <InputEntry>WPS1/2*ZZTLA2A0BL$P1ADT/1CNN$RQ</InputEntry>
+            </TransactionInfo>
+            <NameAssociationInfo firstName="CARL" lastName="JONES" nameId="2" nameNumber="2.1"/>
+            <SegmentInfo number="1" segmentStatus="OK">
+              <Flight connectionIndicator="O">
+                <MarketingFlight number="2206">UA</MarketingFlight>
+                <ClassOfService>T</ClassOfService>
+                <Departure>
+                  <DateTime>2023-10-12T15:30:00</DateTime>
+                  <CityCode name="NEWARK">EWR</CityCode>
+                </Departure>
+                <Arrival>
+                  <DateTime>2023-10-12T18:29:00</DateTime>
+                  <CityCode name="HOUSTON GEO BUSH">IAH</CityCode>
+                </Arrival>
+              </Flight>
+              <FareBasis>TLA2A0BL/CH25</FareBasis>
+              <NotValidBefore>2023-10-12</NotValidBefore>
+              <NotValidAfter>2023-10-12</NotValidAfter>
+              <Baggage allowance="NIL" type="N"/>
+              <BrandedFare/>
+            </SegmentInfo>
+            <SegmentInfo number="2" segmentStatus="OK">
+              <Flight connectionIndicator="X">
+                <MarketingFlight number="62">UA</MarketingFlight>
+                <ClassOfService>T</ClassOfService>
+                <Departure>
+                  <DateTime>2023-10-12T19:55:00</DateTime>
+                  <CityCode name="HOUSTON GEO BUSH">IAH</CityCode>
+                </Departure>
+                <Arrival>
+                  <DateTime>2023-10-13T07:35:00</DateTime>
+                  <CityCode name="SAO PAULO GUARULH">GRU</CityCode>
+                </Arrival>
+              </Flight>
+              <FareBasis>TLA2A0BL/CH25</FareBasis>
+              <NotValidBefore>2023-10-12</NotValidBefore>
+              <NotValidAfter>2023-10-12</NotValidAfter>
+              <Baggage allowance="NIL" type="N"/>
+              <BrandedFare/>
+            </SegmentInfo>
+            <FareInfo source="ATPC">
+              <FareIndicators/>
+              <BaseFare currencyCode="USD" decimalPlace="2">293.00</BaseFare>
+              <TotalTax currencyCode="USD" decimalPlace="2">35.70</TotalTax>
+              <TotalFare currencyCode="USD" decimalPlace="2">328.70</TotalFare>
+              <TaxInfo>
+                <CombinedTax code="AY">
+                  <Amount currencyCode="USD" decimalPlace="2">5.60</Amount>
+                </CombinedTax>
+                <CombinedTax code="US">
+                  <Amount currencyCode="USD" decimalPlace="2">21.10</Amount>
+                </CombinedTax>
+                <CombinedTax code="XF">
+                  <Amount currencyCode="USD" decimalPlace="2">9.00</Amount>
+                </CombinedTax>
+                <Tax code="AY">
+                  <Amount currencyCode="USD" decimalPlace="2">5.60</Amount>
+                </Tax>
+                <Tax code="US">
+                  <Amount currencyCode="USD" decimalPlace="2">21.10</Amount>
+                </Tax>
+                <Tax code="XF">
+                  <Amount currencyCode="USD" decimalPlace="2">9.00</Amount>
+                </Tax>
+              </TaxInfo>
+              <FareCalculation rateOfExchange="1.00000000">EWR UA X/HOU UA SAO293.25NUC293.25END ROE1.00 XFEWR4.5IAH4.5</FareCalculation>
+              <FareComponent fareBasisCode="TLA2A0BL/CH25" number="1" type="EOU" typeBitmap="01">
+                <FlightSegmentNumbers>
+                  <SegmentNumber>1</SegmentNumber>
+                  <SegmentNumber>2</SegmentNumber>
+                </FlightSegmentNumbers>
+                <FareDirectionality oneWay="true"/>
+                <Departure>
+                  <DateTime>2023-10-12T15:30:00</DateTime>
+                  <CityCode name="NEWARK">EWR</CityCode>
+                </Departure>
+                <Arrival>
+                  <DateTime>2023-10-13T07:35:00</DateTime>
+                  <CityCode name="SAO PAULO GUARULH">SAO</CityCode>
+                </Arrival>
+                <Amount currencyCode="NUC" decimalPlace="2">293.25</Amount>
+                <GoverningCarrier>UA</GoverningCarrier>
+                <TicketDesignator>CH25</TicketDesignator>
+                <Rules carrier="UA" rule="Y0BL" tariff="5" vendor="ATP"/>
+              </FareComponent>
+            </FareInfo>
+            <FeeInfo/>
+            <MiscellaneousInfo>
+              <ValidatingCarrier>UA</ValidatingCarrier>
+              <ItineraryType>I</ItineraryType>
+            </MiscellaneousInfo>
+            <MessageInfo>
+              <Message number="201" type="WARNING">Fare not guaranteed until ticketed</Message>
+              <Message type="WARNING">EACH CNN REQUIRES ACCOMPANYING SAME RULE SAME CABIN ADT</Message>
+              <Message type="WARNING">VALIDATING CARRIER - UA</Message>
+              <Remarks type="ENS">NRF-BE/NOCHGDAFTDPT/NOASR</Remarks>
+              <PricingParameters>WPS1/2*ZZTLA2A0BL$P1ADT/1CNN$RQ</PricingParameters>
+              <BaggageDisclosure>BAG ALLOWANCE     -EWRGRU-NIL/UA 1STCHECKED BAG FEE-EWRGRU-USD70.00/UA/UP TO 50 POUNDS/23 KILOGR AMS AND UP TO 62 LINEAR INCHES/158 LINEAR CENTIMETERS 2NDCHECKED BAG FEE-EWRGRU-USD100.00/UA/UP TO 70 POUNDS/32 KILOG RAMS AND UP TO 62 LINEAR INCHES/158 LINEAR CENTIMETERS CARRY ON ALLOWANCE EWRIAH IAHGRU-01P/UA 01/CARRY ON HAND BAGGAGE 01/UP TO 45 LINEAR INCHES/115 LINEAR CENTIMETERS CARRY ON CHARGES EWRIAH IAHGRU-UA-CARRY ON FEES UNKNOWN-CONTACT CARRIER ADDITIONAL ALLOWANCES AND/OR DISCOUNTS MAY APPLY DEPENDING ON FLYER-SPECIFIC FACTORS /E.G. FREQUENT FLYER STATUS/MILITARY/ CREDIT CARD FORM OF PAYMENT/EARLY PURCHASE OVER INTERNET,ETC./ </BaggageDisclosure>
+            </MessageInfo>
+            <HistoryInfo>
+              <AgentInfo sine="AWU">
+                <HomeLocation>7DCK</HomeLocation>
+              </AgentInfo>
+              <TransactionInfo>
+                <LocalDateTime>2023-09-26T21:43:00</LocalDateTime>
+                <InputEntry>WPS1/2*ZZTLA2A0BL$P1ADT/1CNN$RQ</InputEntry>
+              </TransactionInfo>
+            </HistoryInfo>
+          </Details>
+        </PriceQuoteInfo>
+      </or114:PriceQuote>
+    </stl19:GetReservationRS>
+  </soap-env:Body>
+</soap-env:Envelope>

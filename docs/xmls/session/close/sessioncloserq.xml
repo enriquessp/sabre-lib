@@ -1,0 +1,5 @@
+    <ns2:SessionCloseRQ xmlns:ns2="http://www.opentravel.org/OTA/2002/11" xmlns:ns3="http://schemas.xmlsoap.org/ws/2002/12/secext" xmlns:ns5="http://www.ebxml.org/namespaces/messageHeader" xmlns:ns6="http://www.w3.org/1999/xlink" xmlns:ns7="http://www.w3.org/2000/09/xmldsig#">
+      <ns2:POS>
+        <ns2:Source PseudoCityCode="7DCK"/>
+      </ns2:POS>
+    </ns2:SessionCloseRQ>

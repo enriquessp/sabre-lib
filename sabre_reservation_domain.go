@@ -295,6 +295,39 @@ func (r GetReservationRS) GetOpenReservationsByPax(paxId string) []OpenReservati
 	return collections.FilterSlice(r.Reservation.OpenReservationElements.OpenReservationElement, func(o OpenReservationElement) bool { return o.NameAssociation.NameRefNumber == paxId })
 }
 
+func (r GetReservationRS) GetPassengers() []Passenger {
+	return r.Reservation.PassengerReservation.Passengers.Passenger
+}
+
+func (r GetReservationRS) GetPassengersByPtc(ptc PTC) []Passenger {
+	return collections.FilterSlice(r.GetPassengers(), passengerPtcFilter(ptc))
+}
+
+func (r GetReservationRS) GetAdultPassengers() []Passenger {
+	return r.GetPassengersByPtc(PTC_ADT)
+}
+
+func (r GetReservationRS) GetInfantPassengers() []Passenger {
+	return r.GetPassengersByPtc(PTC_INF)
+}
+
+func (r GetReservationRS) GetChildPassengers() []Passenger {
+	var rs []Passenger
+	rs = append(rs, r.GetPassengersByPtc(PTC_CNN)...)
+	rs = append(rs, r.GetPassengersByPtc(PTC_CHD)...)
+	return rs
+}
+
+func (r GetReservationRS) HasChild() bool {
+	return len(r.GetChildPassengers()) > 0
+}
+
+func passengerPtcFilter(ptc PTC) func(Passenger) bool {
+	return func(p Passenger) bool {
+		return p.PassengerType == ptc
+	}
+}
+
 type Reservation struct {
 	Text                    string                  `xml:",chardata"`
 	NumberInSegment         string                  `xml:"NumberInSegment,attr"`
@@ -348,220 +381,8 @@ type POS struct {
 }
 
 type PassengerReservation struct {
-	Text       string `xml:",chardata"`
-	Passengers struct {
-		Text      string `xml:",chardata"`
-		Passenger []struct {
-			Text          string `xml:",chardata"`
-			ElementId     string `xml:"elementId,attr"`
-			ID            string `xml:"id,attr"`
-			NameAssocId   string `xml:"nameAssocId,attr"`
-			NameId        string `xml:"nameId,attr"`
-			NameType      string `xml:"nameType,attr"`
-			PassengerType string `xml:"passengerType,attr"`
-			LastName      string `xml:"LastName"`
-			FirstName     string `xml:"FirstName"`
-			FrequentFlyer []struct {
-				Text                 string `xml:",chardata"`
-				RPH                  string `xml:"RPH,attr"`
-				ID                   string `xml:"id,attr"`
-				SupplierCode         string `xml:"SupplierCode"`
-				Number               string `xml:"Number"`
-				TierLevelNumber      string `xml:"TierLevelNumber"`
-				ShortText            string `xml:"ShortText"`
-				ReceivingCarrierCode string `xml:"ReceivingCarrierCode"`
-				StatusCode           string `xml:"StatusCode"`
-			} `xml:"FrequentFlyer"`
-			SpecialRequests struct {
-				Text        string `xml:",chardata"`
-				APISRequest struct {
-					Text      string `xml:",chardata"`
-					DOCSEntry struct {
-						Text          string `xml:",chardata"`
-						ID            string `xml:"id,attr"`
-						Type          string `xml:"type,attr"`
-						DateOfBirth   string `xml:"DateOfBirth"`
-						Gender        string `xml:"Gender"`
-						Surname       string `xml:"Surname"`
-						Forename      string `xml:"Forename"`
-						MiddleName    string `xml:"MiddleName"`
-						PrimaryHolder string `xml:"PrimaryHolder"`
-						FreeText      string `xml:"FreeText"`
-						ActionCode    string `xml:"ActionCode"`
-						NumberInParty string `xml:"NumberInParty"`
-						VendorCode    string `xml:"VendorCode"`
-					} `xml:"DOCSEntry"`
-				} `xml:"APISRequest"`
-			} `xml:"SpecialRequests"`
-			Seats string `xml:"Seats"`
-		} `xml:"Passenger"`
-	} `xml:"Passengers"`
-	Segments struct {
-		Text string `xml:",chardata"`
-		Poc  struct {
-			Text      string `xml:",chardata"`
-			Airport   string `xml:"Airport"`
-			Departure string `xml:"Departure"`
-		} `xml:"Poc"`
-		Segment []struct {
-			Text     string `xml:",chardata"`
-			ID       string `xml:"id,attr"`
-			Sequence string `xml:"sequence,attr"`
-			Air      struct {
-				Text                        string `xml:",chardata"`
-				Code                        string `xml:"Code,attr"`
-				CodeShare                   string `xml:"CodeShare,attr"`
-				DayOfWeekInd                string `xml:"DayOfWeekInd,attr"`
-				ResBookDesigCode            string `xml:"ResBookDesigCode,attr"`
-				SmokingAllowed              string `xml:"SmokingAllowed,attr"`
-				SpecialMeal                 string `xml:"SpecialMeal,attr"`
-				StopQuantity                string `xml:"StopQuantity,attr"`
-				ID                          string `xml:"id,attr"`
-				IsPast                      string `xml:"isPast,attr"`
-				SegmentAssociationId        string `xml:"segmentAssociationId,attr"`
-				Sequence                    string `xml:"sequence,attr"`
-				DepartureAirport            string `xml:"DepartureAirport"`
-				DepartureAirportCodeContext string `xml:"DepartureAirportCodeContext"`
-				ArrivalAirport              string `xml:"ArrivalAirport"`
-				ArrivalAirportCodeContext   string `xml:"ArrivalAirportCodeContext"`
-				ArrivalTerminalName         string `xml:"ArrivalTerminalName"`
-				ArrivalTerminalCode         string `xml:"ArrivalTerminalCode"`
-				OperatingAirlineCode        string `xml:"OperatingAirlineCode"`
-				OperatingAirlineShortName   string `xml:"OperatingAirlineShortName"`
-				OperatingFlightNumber       string `xml:"OperatingFlightNumber"`
-				EquipmentType               string `xml:"EquipmentType"`
-				MarketingAirlineCode        string `xml:"MarketingAirlineCode"`
-				MarketingFlightNumber       string `xml:"MarketingFlightNumber"`
-				OperatingClassOfService     string `xml:"OperatingClassOfService"`
-				MarketingClassOfService     string `xml:"MarketingClassOfService"`
-				MarriageGrp                 struct {
-					Text     string `xml:",chardata"`
-					Ind      string `xml:"Ind"`
-					Group    string `xml:"Group"`
-					Sequence string `xml:"Sequence"`
-				} `xml:"MarriageGrp"`
-				Meal []struct {
-					Text string `xml:",chardata"`
-					Code string `xml:"Code,attr"`
-				} `xml:"Meal"`
-				Seats                   string `xml:"Seats"`
-				AirlineRefId            string `xml:"AirlineRefId"`
-				Eticket                 string `xml:"Eticket"`
-				DepartureDateTime       string `xml:"DepartureDateTime"`
-				ArrivalDateTime         string `xml:"ArrivalDateTime"`
-				FlightNumber            string `xml:"FlightNumber"`
-				ClassOfService          string `xml:"ClassOfService"`
-				ActionCode              string `xml:"ActionCode"`
-				NumberInParty           string `xml:"NumberInParty"`
-				SegmentSpecialRequests  string `xml:"SegmentSpecialRequests"`
-				InboundConnection       string `xml:"inboundConnection"`
-				OutboundConnection      string `xml:"outboundConnection"`
-				ScheduleChangeIndicator string `xml:"ScheduleChangeIndicator"`
-				SegmentBookedDate       string `xml:"SegmentBookedDate"`
-				ElapsedTime             string `xml:"ElapsedTime"`
-				AirMilesFlown           string `xml:"AirMilesFlown"`
-				FunnelFlight            string `xml:"FunnelFlight"`
-				ChangeOfGauge           string `xml:"ChangeOfGauge"`
-				Cabin                   struct {
-					Text      string `xml:",chardata"`
-					Code      string `xml:"Code,attr"`
-					Lang      string `xml:"Lang,attr"`
-					Name      string `xml:"Name,attr"`
-					SabreCode string `xml:"SabreCode,attr"`
-					ShortName string `xml:"ShortName,attr"`
-				} `xml:"Cabin"`
-				Banner                string `xml:"Banner"`
-				Informational         string `xml:"Informational"`
-				DepartureTerminalName string `xml:"DepartureTerminalName"`
-				DepartureTerminalCode string `xml:"DepartureTerminalCode"`
-			} `xml:"Air"`
-			General struct {
-				Chardata     string `xml:",chardata"`
-				DayOfWeekInd string `xml:"dayOfWeekInd,attr"`
-				IsPast       string `xml:"isPast,attr"`
-				Line         struct {
-					Text   string `xml:",chardata"`
-					Number string `xml:"Number,attr"`
-					Status string `xml:"Status,attr"`
-					Type   string `xml:"Type,attr"`
-				} `xml:"Line"`
-				Vendor struct {
-					Text string `xml:",chardata"`
-					Code string `xml:"Code,attr"`
-				} `xml:"Vendor"`
-				NumberInParty string `xml:"NumberInParty"`
-				Location      struct {
-					Text         string `xml:",chardata"`
-					LocationCode string `xml:"LocationCode,attr"`
-				} `xml:"Location"`
-				DateTime string `xml:"DateTime"`
-				Text     string `xml:"Text"`
-			} `xml:"General"`
-			Product struct {
-				Text           string `xml:",chardata"`
-				ID             string `xml:"id,attr"`
-				ProductDetails struct {
-					Text            string `xml:",chardata"`
-					ProductCategory string `xml:"productCategory,attr"`
-					ProductName     struct {
-						Text string `xml:",chardata"`
-						Type string `xml:"type,attr"`
-					} `xml:"ProductName"`
-					Air struct {
-						Text                    string `xml:",chardata"`
-						SegmentAssociationId    string `xml:"segmentAssociationId,attr"`
-						Sequence                string `xml:"sequence,attr"`
-						DepartureAirport        string `xml:"DepartureAirport"`
-						ArrivalAirport          string `xml:"ArrivalAirport"`
-						ArrivalTerminalName     string `xml:"ArrivalTerminalName"`
-						ArrivalTerminalCode     string `xml:"ArrivalTerminalCode"`
-						EquipmentType           string `xml:"EquipmentType"`
-						MarketingAirlineCode    string `xml:"MarketingAirlineCode"`
-						MarketingFlightNumber   string `xml:"MarketingFlightNumber"`
-						MarketingClassOfService string `xml:"MarketingClassOfService"`
-						MarriageGrp             struct {
-							Text     string `xml:",chardata"`
-							Group    string `xml:"Group"`
-							Sequence string `xml:"Sequence"`
-						} `xml:"MarriageGrp"`
-						Cabin struct {
-							Text      string `xml:",chardata"`
-							Code      string `xml:"code,attr"`
-							Lang      string `xml:"lang,attr"`
-							Name      string `xml:"name,attr"`
-							SabreCode string `xml:"sabreCode,attr"`
-							ShortName string `xml:"shortName,attr"`
-						} `xml:"Cabin"`
-						MealCode          []string `xml:"MealCode"`
-						ElapsedTime       string   `xml:"ElapsedTime"`
-						AirMilesFlown     string   `xml:"AirMilesFlown"`
-						FunnelFlight      string   `xml:"FunnelFlight"`
-						ChangeOfGauge     string   `xml:"ChangeOfGauge"`
-						DisclosureCarrier struct {
-							Text   string `xml:",chardata"`
-							Code   string `xml:"Code,attr"`
-							DOT    string `xml:"DOT,attr"`
-							Banner string `xml:"Banner"`
-						} `xml:"DisclosureCarrier"`
-						AirlineRefId            string `xml:"AirlineRefId"`
-						Eticket                 string `xml:"Eticket"`
-						DepartureDateTime       string `xml:"DepartureDateTime"`
-						ArrivalDateTime         string `xml:"ArrivalDateTime"`
-						FlightNumber            string `xml:"FlightNumber"`
-						ClassOfService          string `xml:"ClassOfService"`
-						ActionCode              string `xml:"ActionCode"`
-						NumberInParty           string `xml:"NumberInParty"`
-						InboundConnection       string `xml:"inboundConnection"`
-						OutboundConnection      string `xml:"outboundConnection"`
-						ScheduleChangeIndicator string `xml:"ScheduleChangeIndicator"`
-						SegmentBookedDate       string `xml:"SegmentBookedDate"`
-						DepartureTerminalName   string `xml:"DepartureTerminalName"`
-						DepartureTerminalCode   string `xml:"DepartureTerminalCode"`
-					} `xml:"Air"`
-				} `xml:"ProductDetails"`
-			} `xml:"Product"`
-		} `xml:"Segment"`
-	} `xml:"Segments"`
+	Passengers    Passengers `xml:"Passengers"`
+	Segments      Segments   `xml:"Segments"`
 	TicketingInfo struct {
 		Text               string `xml:",chardata"`
 		TicketingTimeLimit struct {
@@ -803,4 +624,223 @@ type OpenReservationElement struct {
 		ID            string `xml:"Id"`
 		ReferenceId   string `xml:"ReferenceId"`
 	} `xml:"NameAssociation"`
+}
+
+type Passengers struct {
+	Text      string      `xml:",chardata"`
+	Passenger []Passenger `xml:"Passenger"`
+}
+
+type Segments struct {
+	Text string `xml:",chardata"`
+	Poc  struct {
+		Text      string `xml:",chardata"`
+		Airport   string `xml:"Airport"`
+		Departure string `xml:"Departure"`
+	} `xml:"Poc"`
+	Segment []Segment `xml:"Segment"`
+}
+
+type Segment struct {
+	Text     string `xml:",chardata"`
+	ID       string `xml:"id,attr"`
+	Sequence string `xml:"sequence,attr"`
+	Air      struct {
+		Text                        string `xml:",chardata"`
+		Code                        string `xml:"Code,attr"`
+		CodeShare                   string `xml:"CodeShare,attr"`
+		DayOfWeekInd                string `xml:"DayOfWeekInd,attr"`
+		ResBookDesigCode            string `xml:"ResBookDesigCode,attr"`
+		SmokingAllowed              string `xml:"SmokingAllowed,attr"`
+		SpecialMeal                 string `xml:"SpecialMeal,attr"`
+		StopQuantity                string `xml:"StopQuantity,attr"`
+		ID                          string `xml:"id,attr"`
+		IsPast                      string `xml:"isPast,attr"`
+		SegmentAssociationId        string `xml:"segmentAssociationId,attr"`
+		Sequence                    string `xml:"sequence,attr"`
+		DepartureAirport            string `xml:"DepartureAirport"`
+		DepartureAirportCodeContext string `xml:"DepartureAirportCodeContext"`
+		ArrivalAirport              string `xml:"ArrivalAirport"`
+		ArrivalAirportCodeContext   string `xml:"ArrivalAirportCodeContext"`
+		ArrivalTerminalName         string `xml:"ArrivalTerminalName"`
+		ArrivalTerminalCode         string `xml:"ArrivalTerminalCode"`
+		OperatingAirlineCode        string `xml:"OperatingAirlineCode"`
+		OperatingAirlineShortName   string `xml:"OperatingAirlineShortName"`
+		OperatingFlightNumber       string `xml:"OperatingFlightNumber"`
+		EquipmentType               string `xml:"EquipmentType"`
+		MarketingAirlineCode        string `xml:"MarketingAirlineCode"`
+		MarketingFlightNumber       string `xml:"MarketingFlightNumber"`
+		OperatingClassOfService     string `xml:"OperatingClassOfService"`
+		MarketingClassOfService     string `xml:"MarketingClassOfService"`
+		MarriageGrp                 struct {
+			Text     string `xml:",chardata"`
+			Ind      string `xml:"Ind"`
+			Group    string `xml:"Group"`
+			Sequence string `xml:"Sequence"`
+		} `xml:"MarriageGrp"`
+		Meal []struct {
+			Text string `xml:",chardata"`
+			Code string `xml:"Code,attr"`
+		} `xml:"Meal"`
+		Seats                   string `xml:"Seats"`
+		AirlineRefId            string `xml:"AirlineRefId"`
+		Eticket                 string `xml:"Eticket"`
+		DepartureDateTime       string `xml:"DepartureDateTime"`
+		ArrivalDateTime         string `xml:"ArrivalDateTime"`
+		FlightNumber            string `xml:"FlightNumber"`
+		ClassOfService          string `xml:"ClassOfService"`
+		ActionCode              string `xml:"ActionCode"`
+		NumberInParty           string `xml:"NumberInParty"`
+		SegmentSpecialRequests  string `xml:"SegmentSpecialRequests"`
+		InboundConnection       string `xml:"inboundConnection"`
+		OutboundConnection      string `xml:"outboundConnection"`
+		ScheduleChangeIndicator string `xml:"ScheduleChangeIndicator"`
+		SegmentBookedDate       string `xml:"SegmentBookedDate"`
+		ElapsedTime             string `xml:"ElapsedTime"`
+		AirMilesFlown           string `xml:"AirMilesFlown"`
+		FunnelFlight            string `xml:"FunnelFlight"`
+		ChangeOfGauge           string `xml:"ChangeOfGauge"`
+		Cabin                   struct {
+			Text      string `xml:",chardata"`
+			Code      string `xml:"Code,attr"`
+			Lang      string `xml:"Lang,attr"`
+			Name      string `xml:"Name,attr"`
+			SabreCode string `xml:"SabreCode,attr"`
+			ShortName string `xml:"ShortName,attr"`
+		} `xml:"Cabin"`
+		Banner                string `xml:"Banner"`
+		Informational         string `xml:"Informational"`
+		DepartureTerminalName string `xml:"DepartureTerminalName"`
+		DepartureTerminalCode string `xml:"DepartureTerminalCode"`
+	} `xml:"Air"`
+	General struct {
+		Chardata     string `xml:",chardata"`
+		DayOfWeekInd string `xml:"dayOfWeekInd,attr"`
+		IsPast       string `xml:"isPast,attr"`
+		Line         struct {
+			Text   string `xml:",chardata"`
+			Number string `xml:"Number,attr"`
+			Status string `xml:"Status,attr"`
+			Type   string `xml:"Type,attr"`
+		} `xml:"Line"`
+		Vendor struct {
+			Text string `xml:",chardata"`
+			Code string `xml:"Code,attr"`
+		} `xml:"Vendor"`
+		NumberInParty string `xml:"NumberInParty"`
+		Location      struct {
+			Text         string `xml:",chardata"`
+			LocationCode string `xml:"LocationCode,attr"`
+		} `xml:"Location"`
+		DateTime string `xml:"DateTime"`
+		Text     string `xml:"Text"`
+	} `xml:"General"`
+	Product struct {
+		Text           string `xml:",chardata"`
+		ID             string `xml:"id,attr"`
+		ProductDetails struct {
+			Text            string `xml:",chardata"`
+			ProductCategory string `xml:"productCategory,attr"`
+			ProductName     struct {
+				Text string `xml:",chardata"`
+				Type string `xml:"type,attr"`
+			} `xml:"ProductName"`
+			Air struct {
+				Text                    string `xml:",chardata"`
+				SegmentAssociationId    string `xml:"segmentAssociationId,attr"`
+				Sequence                string `xml:"sequence,attr"`
+				DepartureAirport        string `xml:"DepartureAirport"`
+				ArrivalAirport          string `xml:"ArrivalAirport"`
+				ArrivalTerminalName     string `xml:"ArrivalTerminalName"`
+				ArrivalTerminalCode     string `xml:"ArrivalTerminalCode"`
+				EquipmentType           string `xml:"EquipmentType"`
+				MarketingAirlineCode    string `xml:"MarketingAirlineCode"`
+				MarketingFlightNumber   string `xml:"MarketingFlightNumber"`
+				MarketingClassOfService string `xml:"MarketingClassOfService"`
+				MarriageGrp             struct {
+					Text     string `xml:",chardata"`
+					Group    string `xml:"Group"`
+					Sequence string `xml:"Sequence"`
+				} `xml:"MarriageGrp"`
+				Cabin struct {
+					Text      string `xml:",chardata"`
+					Code      string `xml:"code,attr"`
+					Lang      string `xml:"lang,attr"`
+					Name      string `xml:"name,attr"`
+					SabreCode string `xml:"sabreCode,attr"`
+					ShortName string `xml:"shortName,attr"`
+				} `xml:"Cabin"`
+				MealCode          []string `xml:"MealCode"`
+				ElapsedTime       string   `xml:"ElapsedTime"`
+				AirMilesFlown     string   `xml:"AirMilesFlown"`
+				FunnelFlight      string   `xml:"FunnelFlight"`
+				ChangeOfGauge     string   `xml:"ChangeOfGauge"`
+				DisclosureCarrier struct {
+					Text   string `xml:",chardata"`
+					Code   string `xml:"Code,attr"`
+					DOT    string `xml:"DOT,attr"`
+					Banner string `xml:"Banner"`
+				} `xml:"DisclosureCarrier"`
+				AirlineRefId            string `xml:"AirlineRefId"`
+				Eticket                 string `xml:"Eticket"`
+				DepartureDateTime       string `xml:"DepartureDateTime"`
+				ArrivalDateTime         string `xml:"ArrivalDateTime"`
+				FlightNumber            string `xml:"FlightNumber"`
+				ClassOfService          string `xml:"ClassOfService"`
+				ActionCode              string `xml:"ActionCode"`
+				NumberInParty           string `xml:"NumberInParty"`
+				InboundConnection       string `xml:"inboundConnection"`
+				OutboundConnection      string `xml:"outboundConnection"`
+				ScheduleChangeIndicator string `xml:"ScheduleChangeIndicator"`
+				SegmentBookedDate       string `xml:"SegmentBookedDate"`
+				DepartureTerminalName   string `xml:"DepartureTerminalName"`
+				DepartureTerminalCode   string `xml:"DepartureTerminalCode"`
+			} `xml:"Air"`
+		} `xml:"ProductDetails"`
+	} `xml:"Product"`
+}
+
+type Passenger struct {
+	Text          string `xml:",chardata"`
+	ElementId     string `xml:"elementId,attr"`
+	ID            string `xml:"id,attr"`
+	NameAssocId   string `xml:"nameAssocId,attr"`
+	NameId        string `xml:"nameId,attr"`
+	NameType      string `xml:"nameType,attr"`
+	PassengerType PTC    `xml:"passengerType,attr"`
+	LastName      string `xml:"LastName"`
+	FirstName     string `xml:"FirstName"`
+	FrequentFlyer []struct {
+		Text                 string `xml:",chardata"`
+		RPH                  string `xml:"RPH,attr"`
+		ID                   string `xml:"id,attr"`
+		SupplierCode         string `xml:"SupplierCode"`
+		Number               string `xml:"Number"`
+		TierLevelNumber      string `xml:"TierLevelNumber"`
+		ShortText            string `xml:"ShortText"`
+		ReceivingCarrierCode string `xml:"ReceivingCarrierCode"`
+		StatusCode           string `xml:"StatusCode"`
+	} `xml:"FrequentFlyer"`
+	SpecialRequests struct {
+		Text        string `xml:",chardata"`
+		APISRequest struct {
+			Text      string `xml:",chardata"`
+			DOCSEntry struct {
+				Text          string `xml:",chardata"`
+				ID            string `xml:"id,attr"`
+				Type          string `xml:"type,attr"`
+				DateOfBirth   string `xml:"DateOfBirth"`
+				Gender        string `xml:"Gender"`
+				Surname       string `xml:"Surname"`
+				Forename      string `xml:"Forename"`
+				MiddleName    string `xml:"MiddleName"`
+				PrimaryHolder string `xml:"PrimaryHolder"`
+				FreeText      string `xml:"FreeText"`
+				ActionCode    string `xml:"ActionCode"`
+				NumberInParty string `xml:"NumberInParty"`
+				VendorCode    string `xml:"VendorCode"`
+			} `xml:"DOCSEntry"`
+		} `xml:"APISRequest"`
+	} `xml:"SpecialRequests"`
+	Seats string `xml:"Seats"`
 }

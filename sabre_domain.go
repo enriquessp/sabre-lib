@@ -14,6 +14,15 @@ const (
 	SSR_DOCS_CODE = "DOCS"
 )
 
+type PTC string
+
+const (
+	PTC_ADT PTC = "ADT"
+	PTC_CNN PTC = "CNN"
+	PTC_CHD PTC = "CHD"
+	PTC_INF PTC = "INF"
+)
+
 func createSabreSoapEnvelope(req interface{}, service, securityToken string, session *SabreSession) (string, error) {
 	requestBody, err := xml.Marshal(&req)
 	if err != nil {

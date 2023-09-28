@@ -60,6 +60,12 @@ func assertGetReservationRSChldSsr(t *testing.T, rs interface{}) {
 
 	chldSsrs := collections.FilterSlice(ssrs, func(o OpenReservationElement) bool { return o.ServiceRequest.Code == SSR_CHLD_CODE })
 	assert.Equal(t, 2, len(chldSsrs))
+
+	assert.True(t, reservation.HasChild())
+	assert.Equal(t, 2, len(reservation.GetPassengers()))
+	assert.Equal(t, 1, len(reservation.GetAdultPassengers()))
+	assert.Equal(t, 1, len(reservation.GetChildPassengers()))
+	assert.Equal(t, 0, len(reservation.GetInfantPassengers()))
 }
 
 func assertGetReservationRSRequiredFields(t *testing.T, rs interface{}) {
